@@ -1,0 +1,12 @@
+﻿@model DumDum_Star.Models.Views.ErrorModel
+@{
+    Layout = null;
+}
+
+<div>
+    <p>@Model.ID</p>
+
+    <p>@Convert.ToInt32(Model.Code) @Model.Code</p>
+
+    <p>@Model.Message</p>
+</div>

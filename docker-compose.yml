@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  dumdum_star:
+    image: ${DOCKER_REGISTRY-}dumdumstar
+    build:
+      context: .
+      dockerfile: DumDum_Star/Dockerfile

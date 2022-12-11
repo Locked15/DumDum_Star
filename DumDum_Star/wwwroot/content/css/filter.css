@@ -1,0 +1,38 @@
+.search-base {
+    display: flex;
+    
+    flex: auto;
+    flex-direction: column;
+    margin-top: -1%;
+
+    background-color: darkgray;
+}
+
+.search-base > p {
+    margin-left: 10%;
+}
+
+.search-base > div {
+    display: flex;
+
+    flex: auto;
+    flex-direction: row;
+
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 1%;
+}
+
+.search-form {
+    display: flex;
+    flex: auto;
+
+    justify-content: flex-start;
+}
+
+.search-info {
+    display: flex;
+    flex: auto;
+
+    justify-content: flex-end;
+}

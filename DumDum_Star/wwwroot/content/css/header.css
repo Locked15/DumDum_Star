@@ -1,0 +1,33 @@
+.header-base {
+    display: flex;
+
+    flex: auto;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.header-nav {
+    display: flex;
+
+    flex: auto;
+    flex-direction: row;
+
+    padding: 1% 10% 0% 10%;
+}
+
+.header-nav > div {
+    display: flex;
+
+    flex: auto;
+    justify-content: flex-start;
+}
+
+.header-nav > div ~ div {
+    display: flex;
+    gap: 10%;
+
+    flex: auto;
+    align-items: center;
+    justify-content: flex-end;
+}

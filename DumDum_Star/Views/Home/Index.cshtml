@@ -1,0 +1,35 @@
+﻿@model DumDum_Star.Models.Views.HomeModel
+@{
+    ViewBag.Title = "Заглавная — DumDum-Star";
+}
+
+<link rel="stylesheet" href="~/content/css/filter.css" />
+
+<div class="search-base">
+    <p>Поиск и Фильтрация:</p>
+
+    <div>
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+        {
+            <form class="search-form" asp-action="Search">
+                @Html.TextBoxFor(model => model.Search)
+                @Html.TextBoxFor(model => model.LimitLoad)
+
+                <input type="submit"/>
+            </form>
+        }
+
+        <div class="search-info">
+            Найдено имплантов: @Model.AvailableCyberWares.Count()
+        </div>
+    </div>
+</div>
+
+<div>
+    @foreach (var cyber in Model.AvailableCyberWares)
+    {
+        <a asp-action="AddToCart" asp-route-id="@cyber.Id">
+            @cyber.Manufacturer?.Name — @cyber.Name — @cyber.Price;
+        </a>
+    }
+</div>

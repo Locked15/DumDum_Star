@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+
+@using DumDum_Star.Models
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title</title>
+
+        <script type="text/javascript" src="~/content/js/base.js"></script>
+
+        <link rel="stylesheet" href="~/content/css/header.css" />
+        <link rel="stylesheet" href="~/content/css/slider.css" />
+    </head>
+
+    <body>
+        <header class="header-base">
+            <div class="header-nav">
+                <div>
+                    <img id="header-icon" src="~/icons/light/header/secondary-small.svg" alt="Time to chippin' IN!" 
+                         onload="setTitleForIcon()"/>
+                </div>
+
+                <div>
+                    <a asp-controller="Home" asp-action="Error">@SessionData.GetHeaderText()</a>
+
+                    <img src="~/icons/light/header/basket/basket.png" alt="Your basket."/>
+                </div>
+            </div>
+
+            <div class="slider">
+                <s id="swap-1"></s>
+                <s id="swap-2"></s>
+                <s id="swap-3"></s>
+                <s id="swap-4"></s>
+
+                <div class="slides">
+                    <!-- HS — Header Slider. -->
+                    <div id="hs-1">
+                        <img src="~/icons/locations/with-text/Northside.png"/>
+                    </div>
+                    <div id="hs-2">
+                        <img src="~/icons/locations/with-text/Pacifica.png"/>
+                    </div>
+                    <div id="hs-3">
+                        <img src="~/icons/locations/with-text/Watson.png"/>
+                    </div>
+                    <div id="hs-4">
+                            <img src="~/icons/locations/with-text/CityCenter.png"/>
+                    </div>
+                </div>
+
+                <div class="slider-preview">
+                    <div>
+                        <a href="#swap-4"> <= </a>
+                        <a href="#swap-2"> => </a>
+                    </div>
+                    <div>
+                        <a href="#swap-1"> <= </a>
+                        <a href="#swap-3"> => </a>
+                    </div>
+                    <div>
+                        <a href="#swap-2"> <= </a>
+                        <a href="#swap-4"> => </a>
+                    </div>
+                    <div>
+                        <a href="#swap-3"> <= </a>
+                        <a href="#swap-1"> => </a>
+                    </div>
+                </div>
+                <div class="slider-bullets">
+                    <a href="#swap-1">1</a>
+                    <a href="#swap-2">2</a>
+                    <a href="#swap-3">3</a>
+                    <a href="#swap-4">4</a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            @RenderBody()
+        </main>
+
+        <footer>
+        </footer>
+    </body>
+</html>
