@@ -1,38 +1,60 @@
 .search-base {
     display: flex;
-    
     flex: auto;
     flex-direction: column;
-    margin-top: -1%;
-
+    margin-top: -0.5%;
     background-color: darkgray;
+    align-items: stretch;
 }
 
-.search-base > p {
-    margin-left: 10%;
-}
+    .search-base > p {
+        margin-left: 9.25%;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
 
-.search-base > div {
-    display: flex;
+    .search-base > * {
+        font-family: 'Jost', sans-serif;
+    }
 
-    flex: auto;
-    flex-direction: row;
-
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 1%;
-}
+    .search-base > div {
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 1%;
+    }
 
 .search-form {
     display: flex;
     flex: auto;
-
-    justify-content: flex-start;
+    flex-direction: column;
+    gap: 8.192px;
 }
+
+    .search-form .search-body {
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        /* gap: 3.1419%; — Troubles with borders and button. */
+    }
+
+        .search-form .search-body .search-section {
+            display: flex;
+            flex: auto;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+            .search-form .search-body .search-section > label {
+                font-weight: 400;
+            }
 
 .search-info {
     display: flex;
     flex: auto;
-
     justify-content: flex-end;
+    font-weight: 700;
+    font-size: 1.5rem;
 }
