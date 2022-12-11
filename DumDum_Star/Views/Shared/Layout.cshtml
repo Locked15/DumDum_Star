@@ -29,7 +29,7 @@
                     <a class="user-string" asp-controller="Home" asp-action="Error">@SessionData.GetHeaderText()</a>
 
                     <a asp-controller="Home" asp-action="Error">
-                        <img src="~/icons/light/header/basket/basket.png" alt="Your basket." />
+                        <img src=@SessionData.GetBasketIconPath() alt="Your basket." />
                     </a>
                 </div>
             </div>
