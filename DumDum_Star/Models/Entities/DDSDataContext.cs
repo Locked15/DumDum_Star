@@ -15,6 +15,7 @@ namespace DumDum_Star.Models.Entities
         public virtual DbSet<CyberWare> CyberWares { get; set; } = null!;
         public virtual DbSet<CyberWareMessage> CyberWareMessages { get; set; } = null!;
         public virtual DbSet<CyberWareTarget> CyberWareTargets { get; set; } = null!;
+        public virtual DbSet<CyberWareToOrder> CyberWareToOrders { get; set; } = null!;
         public virtual DbSet<CyberWareType> CyberWareTypes { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         #endregion
@@ -175,12 +176,13 @@ namespace DumDum_Star.Models.Entities
                     .HasColumnName("custom")
                     .HasDefaultValueSql("'1'");
 
+                entity.Property(e => e.Image)
+                    .HasMaxLength(128)
+                    .HasColumnName("image");
+
                 entity.Property(e => e.LoadLevel)
                     .HasColumnName("load_level")
                     .HasDefaultValueSql("'0.05'");
-
-                entity.Property(e => e.Image)
-                    .HasColumnName("image");
 
                 entity.Property(e => e.ManufacturerId).HasColumnName("manufacturer_id");
 
@@ -262,6 +264,35 @@ namespace DumDum_Star.Models.Entities
                     .HasColumnName("name")
                     .UseCollation("utf8mb3_general_ci")
                     .HasCharSet("utf8mb3");
+            });
+
+            modelBuilder.Entity<CyberWareToOrder>(entity =>
+            {
+                entity.ToTable("cyber_ware_to_order");
+
+                entity.HasIndex(e => e.CyberWareId, "cyber_in_order_limit");
+
+                entity.HasIndex(e => e.OrderId, "order_in_cyber_limit");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Count).HasColumnName("count");
+
+                entity.Property(e => e.CyberWareId).HasColumnName("cyber_ware_id");
+
+                entity.Property(e => e.OrderId).HasColumnName("order_id");
+
+                entity.HasOne(d => d.CyberWare)
+                    .WithMany(p => p.CyberWareToOrders)
+                    .HasForeignKey(d => d.CyberWareId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("cyber_in_order_limit");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.CyberWareToOrders)
+                    .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("order_in_cyber_limit");
             });
 
             modelBuilder.Entity<CyberWareType>(entity =>

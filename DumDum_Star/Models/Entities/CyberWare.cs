@@ -8,6 +8,7 @@ namespace DumDum_Star.Models.Entities
         public CyberWare()
         {
             CyberWareMessages = new HashSet<CyberWareMessage>();
+            CyberWareToOrders = new HashSet<CyberWareToOrder>();
         }
 
         public int Id { get; set; }
@@ -18,12 +19,13 @@ namespace DumDum_Star.Models.Entities
         public bool? Custom { get; set; }
         public string Name { get; set; } = null!;
         public decimal Price { get; set; }
-        public float? LoadLevel { get; set; }
         public string? Image { get; set; }
+        public float? LoadLevel { get; set; }
 
         public virtual Corporation? Manufacturer { get; set; }
         public virtual CyberWareTarget? Target { get; set; }
         public virtual CyberWareType? Type { get; set; }
         public virtual ICollection<CyberWareMessage> CyberWareMessages { get; set; }
+        public virtual ICollection<CyberWareToOrder> CyberWareToOrders { get; set; }
     }
 }

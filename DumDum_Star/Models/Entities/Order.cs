@@ -5,6 +5,11 @@ namespace DumDum_Star.Models.Entities
 {
     public partial class Order
     {
+        public Order()
+        {
+            CyberWareToOrders = new HashSet<CyberWareToOrder>();
+        }
+
         public int Id { get; set; }
         public int ChoomId { get; set; }
         public int AddressId { get; set; }
@@ -12,5 +17,6 @@ namespace DumDum_Star.Models.Entities
 
         public virtual Address Address { get; set; } = null!;
         public virtual Choom Choom { get; set; } = null!;
+        public virtual ICollection<CyberWareToOrder> CyberWareToOrders { get; set; }
     }
 }

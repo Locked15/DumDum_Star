@@ -25,7 +25,6 @@
 	
 	<ItemGroup>
 		<Folder Include="Controllers\Logic\" />
-		<Folder Include="Models\Entities\" />
 	</ItemGroup>
 
 </Project>
