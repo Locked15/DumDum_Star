@@ -6,21 +6,40 @@
 <link rel="stylesheet" href="~/content/css/filter.css" />
 
 <div class="search-base">
-    <p>Поиск и Фильтрация:</p>
+    <p>Поиск и Фильтрация</p>
 
     <div>
         @using (Html.BeginForm("Search", "Home", FormMethod.Post))
         {
-            <form class="search-form" asp-action="Search">
-                @Html.TextBoxFor(model => model.Search)
-                @Html.TextBoxFor(model => model.LimitLoad)
+            <form asp-action="Search">
+                <div class="search-form">
+                    <div class="search-body">
+                        <div class="search-section">
+                            <label>Запрос</label>
+                            @Html.TextBoxFor(model => model.Search)
 
-                <input type="submit"/>
+                            <label>Пороговая Нагрузка</label>
+                            @Html.TextBoxFor(model => model.LimitLoad)
+                        </div>
+                        <!-- Легко можно добавлять новые секции! -->
+                    </div>
+
+                    <input type="submit" />
+                </div>
             </form>
         }
 
         <div class="search-info">
-            Найдено имплантов: @Model.AvailableCyberWares.Count()
+            @{
+                if (Model.AvailableCyberWares.Any())
+                {
+                    <span>🔍 Найдено имплантов: @Model.AvailableCyberWares.Count() 🔎</span>
+                }
+                else
+                {
+                    <span>✖️ Имплантов по указанным критериям не найдено. ✖️</span>
+                }
+            }
         </div>
     </div>
 </div>

@@ -7,10 +7,14 @@
         <meta charset="utf-8" />
         <title>@ViewBag.Title</title>
 
-        <script type="text/javascript" src="~/content/js/base.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,100&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="~/content/css/header.css" />
         <link rel="stylesheet" href="~/content/css/slider.css" />
+
+        <script type="text/javascript" src="~/content/js/base.js"></script>
     </head>
 
     <body>
@@ -22,9 +26,11 @@
                 </div>
 
                 <div>
-                    <a asp-controller="Home" asp-action="Error">@SessionData.GetHeaderText()</a>
+                    <a class="user-string" asp-controller="Home" asp-action="Error">@SessionData.GetHeaderText()</a>
 
-                    <img src="~/icons/light/header/basket/basket.png" alt="Your basket."/>
+                    <a asp-controller="Home" asp-action="Error">
+                        <img src="~/icons/light/header/basket/basket.png" alt="Your basket." />
+                    </a>
                 </div>
             </div>
 
