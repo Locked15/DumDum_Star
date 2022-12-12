@@ -35,6 +35,10 @@ namespace DumDum_Star
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}"
             );
+            app.MapControllerRoute(
+                name: "user",
+                pattern: "{controller=User}/{action=Account}"
+            );
         }
 
         private static void ConfigureSettings(WebApplication app)

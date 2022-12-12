@@ -8,6 +8,12 @@ namespace DumDum_Star.Models.Views
 
         public double LimitLoad { get; set; }
 
+        public int ManufacturerId { get; set; }
+
+        public int TypeId { get; set; }
+
+        public int CurrentPage { get; set; } = 1;
+
         public List<CyberWare> AvailableCyberWares { get; set; } = Enumerable.Empty<CyberWare>().ToList();
     }
 }

@@ -51,6 +51,11 @@
                 font-weight: 400;
             }
 
+            .search-form .search-body .search-section .search-input {
+                border-radius: 32px;
+                padding: 2px;
+            }
+
 .search-info {
     display: flex;
     flex: auto;

@@ -3,25 +3,80 @@
     ViewBag.Title = "Заглавная — DumDum-Star";
 }
 
+<link rel="stylesheet" href="~/content/css/slider.css" />
 <link rel="stylesheet" href="~/content/css/filter.css" />
+
+<div class="slider">
+    <s id="swap-1"></s>
+    <s id="swap-2"></s>
+    <s id="swap-3"></s>
+    <s id="swap-4"></s>
+
+    <div class="slides">
+        <!-- HS — Header Slider. -->
+        <div id="hs-1">
+            <img src="~/icons/locations/with-text/Northside.png"/>
+        </div>
+        <div id="hs-2">
+            <img src="~/icons/locations/with-text/Pacifica.png"/>
+        </div>
+        <div id="hs-3">
+            <img src="~/icons/locations/with-text/Watson.png"/>
+        </div>
+        <div id="hs-4">
+            <img src="~/icons/locations/with-text/CityCenter.png"/>
+        </div>
+    </div>
+
+    <div class="slider-preview">
+        <div>
+            <a href="#swap-4"> <= </a>
+            <a href="#swap-2"> => </a>
+        </div>
+        <div>
+            <a href="#swap-1"> <= </a>
+            <a href="#swap-3"> => </a>
+        </div>
+        <div>
+            <a href="#swap-2"> <= </a>
+            <a href="#swap-4"> => </a>
+        </div>
+        <div>
+            <a href="#swap-3"> <= </a>
+            <a href="#swap-1"> => </a>
+        </div>
+    </div>
+    <div class="slider-bullets">
+        <a href="#swap-1">1</a>
+        <a href="#swap-2">2</a>
+        <a href="#swap-3">3</a>
+        <a href="#swap-4">4</a>
+    </div>
+</div>
 
 <div class="search-base">
     <p>Поиск и Фильтрация</p>
-
     <div>
         @using (Html.BeginForm("Search", "Home", FormMethod.Post))
         {
             <form asp-action="Search">
                 <div class="search-form">
                     <div class="search-body">
+                        <!-- Create new selection sections here. -->
                         <div class="search-section">
                             <label>Запрос</label>
-                            @Html.TextBoxFor(model => model.Search)
+                            @Html.TextBoxFor(model => model.Search, new { placeholder = "Название импланта...", @class = "search-input" } )
 
                             <label>Пороговая Нагрузка</label>
-                            @Html.TextBoxFor(model => model.LimitLoad)
+                            @Html.TextBoxFor(model => model.LimitLoad, "{0:0.00}", new { @class = "search-input" })
                         </div>
-                        <!-- Легко можно добавлять новые секции! -->
+                        <div class="search-section">
+                            <label>Производитель</label>
+                            @Html.DropDownListFor(model => model.ManufacturerId, new SelectList(ViewBag.Corporations, "Id", "Name"), new { @class = "search-input" } )
+
+                            <label>Тип Импланта</label>
+                            @Html.DropDownListFor(model => model.TypeId, new SelectList(ViewBag.Types, "Id", "Type"), new { @class = "search-input" })
+                        </div>
                     </div>
 
                     <input type="submit" />
