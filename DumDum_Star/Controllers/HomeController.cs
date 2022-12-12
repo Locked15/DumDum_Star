@@ -49,7 +49,7 @@ namespace DumDum_Star.Controllers
             }
             else
             {
-                return RedirectToAction("LogIn", "User", null);
+                return RedirectToAction("Authorization", "User", null);
             }
         }
         #endregion

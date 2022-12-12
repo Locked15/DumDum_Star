@@ -17,6 +17,13 @@ namespace DumDum_Star.Models.Views
                 case HttpStatusCode.NotFound:
                     Message = "Requested page isn't found.\n\nTurn back, while you can.";
                     break;
+                case HttpStatusCode.Unauthorized:
+                    Message = "It looking like you trying to connect to pages, that not acceptable to you.\n\nRun, while you can.";
+                    break;
+
+                default:
+                    Message = "Error? Where?\n\n This errors isn't what you looking for.";
+                    break;
             }
         }
     }

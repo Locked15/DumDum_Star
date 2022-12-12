@@ -1,0 +1,12 @@
+﻿@using DumDum_Star.Models.Views;
+@model AuthorizationModel
+
+<form asp-action="LogIn">
+    <label>Ваш логин:</label>
+    @Html.TextBoxFor(model => model.Login, new { placeholder = "Введите ваш логин..." })
+
+    <label>Ваш пароль:</label>
+    @Html.PasswordFor(model => model.Password, new { placeholder = "Введите ваш пароль..." })
+
+    <input type="submit" />
+</form>
