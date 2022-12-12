@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="input-form">
-                    <label>Пароль:</label>
+                    <label>Пароль*:</label>
                     @Html.PasswordFor(model => model.Password, new { placeholder = "Пароль..." })
                     @Html.ValidationMessageFor(model => model.Password, "Необходимо указать пароль.")
                 </div>
@@ -39,6 +39,7 @@
             <div class="input-form">
                 <input type="submit" value="Войти" />
             </div>
+            <p class="form-text">Поля, отмеченные '*', обязательны для заполнения.</p>
         </form>
     </div>
 </div>

@@ -49,7 +49,7 @@ namespace DumDum_Star.Controllers
                 if (!errors.Any() && CheckCredentialsToUnique(newChoom.Login, newChoom.MailAddress))
                 {
                     Context.Chooms.Add(newChoom);
-                    Context.SaveChanges();
+                    Context.SaveChangesAsync();
 
                     return RedirectToActionPermanent("Index", "Home", null);
                 }

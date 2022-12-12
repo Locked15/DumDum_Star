@@ -67,16 +67,16 @@
         color: red;
     }
 
-.form a {
+.form-text {
     display: block;
     padding: 0 0 30px;
     text-align: center;
     color: #fff;
     text-decoration: none;
-    transition: .3s;
+    transition: .75s;
 }
 
-    .form a:hover {
+    .form-text:hover {
         color: #0fc3f5;
-        font-size: 1.5em;
+        font-size: 1.25em;
     }
