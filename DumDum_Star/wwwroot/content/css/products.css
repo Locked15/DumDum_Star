@@ -1,0 +1,37 @@
+.product-list {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 2.5%;
+}
+
+    .product-list .product-line {
+        display: flex;
+        flex: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        padding: 1%;
+    }
+
+.product-line .product-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-item .product-image {
+    max-width: 256px;
+    max-height: 256px;
+}
+
+.product-item > div > h3 {
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.product-item a {
+    min-width: 35%;
+}

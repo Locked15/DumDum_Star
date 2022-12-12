@@ -27,5 +27,19 @@ namespace DumDum_Star.Models.Entities
         public virtual CyberWareType? Type { get; set; }
         public virtual ICollection<CyberWareMessage> CyberWareMessages { get; set; }
         public virtual ICollection<CyberWareToOrder> CyberWareToOrders { get; set; }
+
+        public double Ranking
+        {
+            get
+            {
+                var rank = CyberWareMessages.Sum(r => r.Rank) / CyberWareMessages.Count;
+
+                // Check to NaN.
+                if (double.IsNaN(rank))
+                    return 0.0;
+                else
+                    return rank;
+            }
+        }
     }
 }
