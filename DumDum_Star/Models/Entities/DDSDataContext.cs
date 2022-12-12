@@ -198,6 +198,8 @@ namespace DumDum_Star.Models.Entities
 
                 entity.Property(e => e.Quantity).HasColumnName("quantity");
 
+                entity.Property(e => e.Description).HasColumnName("description");
+
                 entity.Property(e => e.TargetId).HasColumnName("target_id");
 
                 entity.Property(e => e.TypeId).HasColumnName("type_id");

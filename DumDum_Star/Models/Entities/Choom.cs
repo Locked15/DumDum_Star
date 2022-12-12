@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DumDum_Star.Models.Entities
 {
@@ -14,6 +15,7 @@ namespace DumDum_Star.Models.Entities
         public int Id { get; set; }
         public string Login { get; set; } = null!;
         public string Password { get; set; } = null!;
+        [EmailAddress]
         public string MailAddress { get; set; } = null!;
         public string? Name { get; set; }
 

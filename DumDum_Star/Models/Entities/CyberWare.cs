@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DumDum_Star.Models.Entities
+﻿namespace DumDum_Star.Models.Entities
 {
     public partial class CyberWare
     {
@@ -21,6 +18,7 @@ namespace DumDum_Star.Models.Entities
         public decimal Price { get; set; }
         public string? Image { get; set; }
         public float? LoadLevel { get; set; }
+        public string? Description { get; set; }
 
         public virtual Corporation? Manufacturer { get; set; }
         public virtual CyberWareTarget? Target { get; set; }

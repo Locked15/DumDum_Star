@@ -42,10 +42,11 @@ namespace DumDum_Star.Models
                     toReturn = true;
                 }
 
-                if (CurrentOrder.CyberWareToOrders.FirstOrDefault(cyb => cyb.Id == cyberWare.Id) is var cyberWareOrder &&
+                if (CurrentOrder.CyberWareToOrders.FirstOrDefault(cyb => cyb.CyberWareId == cyberWare.Id) is var cyberWareOrder &&
                     cyberWareOrder != null)
                 {
-                    cyberWareOrder.Count = count;
+                    cyberWareOrder.Count = count != 1 ? count :
+                                           cyberWareOrder.Count + 1;
                 }
                 else
                 {

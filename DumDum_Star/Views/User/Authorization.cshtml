@@ -1,12 +1,28 @@
 ﻿@using DumDum_Star.Models.Views;
 @model AuthorizationModel
 
-<form asp-action="LogIn">
-    <label>Ваш логин:</label>
-    @Html.TextBoxFor(model => model.Login, new { placeholder = "Введите ваш логин..." })
+<link rel="stylesheet" href="~/content/css/register.css" />
 
-    <label>Ваш пароль:</label>
-    @Html.PasswordFor(model => model.Password, new { placeholder = "Введите ваш пароль..." })
+<div class="background">
+    <div class="form">
+        <h1>Вход</h1>
+        <form asp-action="LogIn">
+            <div class="input-fields">
+                <div class="input-form">
+                    <label>Ваш логин:</label>
+                    @Html.TextBoxFor(model => model.Login, new { placeholder = "Логин..." })
+                </div>
 
-    <input type="submit" />
-</form>
+                <div class="input-form">
+                    <label>Пароль:</label>
+                    @Html.PasswordFor(model => model.Password, new { placeholder = "Пароль..." })
+                </div>
+            </div>
+
+            <div class="input-form">
+                <input type="submit" value="Войти"/>
+            </div>
+            <a asp-action="">Зарегистрироваться</a>
+        </form>
+    </div>
+</div>

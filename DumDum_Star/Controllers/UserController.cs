@@ -1,6 +1,7 @@
 ﻿using DumDum_Star.Models;
 using DumDum_Star.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace DumDum_Star.Controllers
 {
@@ -13,7 +14,18 @@ namespace DumDum_Star.Controllers
             Context = context;
         }
 
+        #region Controller Handlers.
+
         public IActionResult Account()
+        {
+            if (SessionData.CurrentChoom != null)
+                return View();
+
+            else
+                return RedirectToAction("Authorization");
+        }
+
+        public IActionResult Registration()
         {
             return View();
         }
@@ -21,6 +33,27 @@ namespace DumDum_Star.Controllers
         public IActionResult Authorization()
         {
             return View();
+        }
+        #endregion
+
+        #region Action Handlers.
+
+        public IActionResult RegisterNewUser(Choom? newChoom)
+        {
+            if (newChoom != null)
+            {
+                var errors = new List<ValidationResult>(1);
+                ValidationContext context = new(newChoom);
+                Validator.TryValidateObject(newChoom, context, errors);
+
+                if (!errors.Any() && CheckCredentialsToUnique(newChoom.Login, newChoom.MailAddress))
+                {
+                    Context.Chooms.Add(newChoom);
+                    return RedirectToActionPermanent("Index", "Home", null);
+                }
+            }
+
+            return View("Registration");
         }
 
         public IActionResult LogIn(string login, string password)
@@ -43,6 +76,16 @@ namespace DumDum_Star.Controllers
         {
             return RedirectToAction("Index", "Home", null);
         }
+        #endregion
+
+        #region Non-Action Functions.
+
+        [NonAction]
+        private bool CheckCredentialsToUnique(string login, string email)
+        {
+            return Context.Chooms.Any(choom => choom.Login == login ||
+                                               choom.MailAddress == email);
+        } 
 
         [NonAction]
         private Choom? TryToGetUserByCredentials(string login, string password)
@@ -53,6 +96,6 @@ namespace DumDum_Star.Controllers
 
             return auth;
         }
-
+        #endregion
     }
 }
