@@ -21,7 +21,10 @@ namespace DumDum_Star.Models.Views
             var first = new List<List<CyberWare>>(1);
             foreach (var item in AvailableCyberWares)
             {
-                if ((item.Id - 1) % divider == 0)
+                var index = AvailableCyberWares.IndexOf(item);
+                index = index != 0 ? index - 1 : 1;
+
+                if ((index - 1) % divider == 0)
                 {
                     first.Add(new(divider));
                     first.LastOrDefault()?.Add(item);

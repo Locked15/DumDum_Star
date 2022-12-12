@@ -110,13 +110,16 @@
             @foreach (var cyber in cybers)
             {
                 <div class="card product-item" style="width: 30%;">
-                    <center><img src="@(cyber.Image ?? "./icons/light/missing.png")" class="card-img-top product-image" alt="Cyber" /></center>
+                    <center>
+                        <img src="@(cyber.Image ?? "/icons/light/missing.png")" class="card-img-top product-image" alt="Cyber" />
+                    </center>
                     <div class="card-body">
                         <h3 class="card-title">@cyber.Name</h3>
+                        <p class="card-subtitle mb-2 text-muted" style="text-align: center;">@cyber.Description</p>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Производитель: @cyber.Manufacturer?.Name</li>
                             <li class="list-group-item">Нагрузка: @cyber.LoadLevel</li>
-                            <li class="list-group-item">Оценка: @cyber.Ranking</li>
+                            <li class="list-group-item">Оценка: @string.Format("{0:0.00}", cyber.Ranking)</li>
                         </ul>
 
                         <center>
