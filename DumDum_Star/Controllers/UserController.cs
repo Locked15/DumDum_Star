@@ -38,17 +38,19 @@ namespace DumDum_Star.Controllers
 
         #region Action Handlers.
 
-        public IActionResult RegisterNewUser(Choom? newChoom)
+        public IActionResult RegisterUser(Choom? newChoom)
         {
             if (newChoom != null)
             {
                 var errors = new List<ValidationResult>(1);
                 ValidationContext context = new(newChoom);
-                Validator.TryValidateObject(newChoom, context, errors);
+                Validator.TryValidateObject(newChoom, context, errors, true);
 
                 if (!errors.Any() && CheckCredentialsToUnique(newChoom.Login, newChoom.MailAddress))
                 {
                     Context.Chooms.Add(newChoom);
+                    Context.SaveChanges();
+
                     return RedirectToActionPermanent("Index", "Home", null);
                 }
             }
@@ -83,7 +85,7 @@ namespace DumDum_Star.Controllers
         [NonAction]
         private bool CheckCredentialsToUnique(string login, string email)
         {
-            return Context.Chooms.Any(choom => choom.Login == login ||
+            return !Context.Chooms.Any(choom => choom.Login == login ||
                                                choom.MailAddress == email);
         } 
 

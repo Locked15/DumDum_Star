@@ -1,5 +1,8 @@
 ﻿@using DumDum_Star.Models.Views;
 @model AuthorizationModel
+@{
+    ViewBag.Title = "Авторизация — Звезда Дум-Дума";
+}
 
 <link rel="stylesheet" href="~/content/css/register.css" />
 
@@ -22,7 +25,7 @@
             <div class="input-form">
                 <input type="submit" value="Войти"/>
             </div>
-            <a asp-action="">Зарегистрироваться</a>
+            <a asp-action="Registration">Зарегистрироваться</a>
         </form>
     </div>
 </div>

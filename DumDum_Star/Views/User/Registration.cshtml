@@ -1,0 +1,44 @@
+﻿@using DumDum_Star.Models.Entities
+@model Choom
+@{
+    ViewBag.Title = "Регистрация — Звезда Дум-Дума";
+}
+
+<link rel="stylesheet" href="~/content/css/register.css" />
+
+<div class="background">
+    <div class="form">
+        <h1>Регистрация</h1>
+        <form asp-action="RegisterUser">
+            <div class="input-fields">
+                <div class="input-form">
+                    <label>Имя:</label>
+                    @Html.TextBoxFor(model => model.Name, new { placeholder = "Имя..." })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+
+                <div class="input-form">
+                    <label>Логин*:</label>
+                    @Html.TextBoxFor(model => model.Login, new { placeholder = "Логин..." })
+                    @Html.ValidationMessageFor(model => model.Login, "Необходимо указать логин.")
+                </div>
+
+                <div class="input-form">
+                    <label>Почта*:</label>
+                    @Html.TextBoxFor(model => model.MailAddress, new { placeholder = "Почта..." })
+                    @Html.ValidationMessageFor(model => model.MailAddress, "Необходимо указать адрес почты.")
+                </div>
+
+                <div class="input-form">
+                    <label>Пароль:</label>
+                    @Html.PasswordFor(model => model.Password, new { placeholder = "Пароль..." })
+                    @Html.ValidationMessageFor(model => model.Password, "Необходимо указать пароль.")
+                </div>
+            </div>
+
+            <div class="input-form">
+                <input type="submit" value="Войти" />
+            </div>
+        </form>
+    </div>
+</div>

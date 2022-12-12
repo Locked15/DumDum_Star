@@ -1,11 +1,9 @@
 .form {
     width: 30%;
-
     background-size: cover;
     background-attachment: fixed;
     font-family: sans-serif;
     border-radius: 15%;
-
     position: absolute;
     top: 50%;
     left: 50%;
@@ -23,7 +21,6 @@
 
 .input-fields {
     display: flex;
-
     flex: auto;
     flex-direction: column;
 }
@@ -55,13 +52,20 @@
             text-transform: uppercase;
             border: none;
             background: #0fc3f5;
-            transition: .6s;
+            transition: 1.024s;
+
+            width: 80%;
         }
 
             .input-form input[type="submit"]:hover {
                 background: #4442db;
                 border-radius: 15px;
             }
+
+    .input-form span {
+        margin-top: 0.5%;
+        color: red;
+    }
 
 .form a {
     display: block;
