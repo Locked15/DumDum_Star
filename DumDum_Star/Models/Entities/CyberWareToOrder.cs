@@ -12,5 +12,13 @@ namespace DumDum_Star.Models.Entities
 
         public virtual CyberWare CyberWare { get; set; } = null!;
         public virtual Order Order { get; set; } = null!;
+
+        public decimal FinalPrice
+        {
+            get
+            {
+                return CyberWare.Price * Count;
+            }
+        }
     }
 }

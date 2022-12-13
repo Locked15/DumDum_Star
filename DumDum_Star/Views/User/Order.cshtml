@@ -1,0 +1,75 @@
+﻿@model DumDum_Star.Models.Entities.Order
+@using DumDum_Star.Models.Entities
+
+
+<link rel="stylesheet" href="~/content/css/order.css" />
+<script src="~/content/js/order.js"></script>
+
+<article class="order-base">
+    <span class="time-to-chippin-in" style="text-align: center;">
+        <a href="https://bit.ly/2WAQWaX">Wanna chippin' in CHOOM?</a>
+    </span>
+
+    @{
+        if (!Model.CyberWareToOrders.Any())
+        {
+            <div>
+                👾 Заказ пуст...
+            </div>
+        }
+
+        else
+        {
+            <table class="order-table">
+                <thead class="order-header">
+                    <th>Товар</th>
+                    <th>Стоимость</th>
+                    <th>Количество</th>
+                    <th>Цена</th>
+                </thead>
+
+                <tbody>
+                    @foreach (var cwto in Model.CyberWareToOrders)
+                    {
+                        <tr>
+                            @if (cwto != null)
+                            {
+                                var name = cwto.CyberWare.Name;
+                                var desc = cwto.CyberWare.Description ?? "Отсутствует.";
+                                var imagePath = cwto.CyberWare?.Image ?? "/content/icons/light/missing.png";
+
+                                <td class="order-td product-identify">
+                                    <img src=@imagePath alt="ALT." />
+                                    <span title="Информация:&#010;@desc">
+                                        @name
+                                    </span>
+                                </td>
+                                <td class="order-td product-info">
+                                    @string.Concat(string.Format("{0:n}", cwto.CyberWare.Price), DumDum_Star.Program.EuroDollar)
+                                </td>
+                                <td class="order-td product-info">
+                                    <input id="Count.@name" type="number" min="0" max="2147483647" value="@cwto.Count" onchange="updateOrderData('@cwto.Id', '@name')" />
+                                </td>
+                                <td class="order-td product-info" style="padding-left: 3.14px;">
+                                    @string.Concat(string.Format("{0:n}", cwto.FinalPrice), DumDum_Star.Program.EuroDollar)
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <section class="order-overview">
+                <span>
+                    Total:
+                </span>
+                <span>
+                    @string.Concat(string.Format("{0:n}", Model.OrderPrice), DumDum_Star.Program.EuroDollar)
+                </span>
+            </section>
+            <section class="order-control">
+                
+            </section>
+        }
+    }
+</article>

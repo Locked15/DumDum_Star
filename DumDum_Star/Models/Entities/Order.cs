@@ -18,5 +18,15 @@ namespace DumDum_Star.Models.Entities
         public virtual Address Address { get; set; } = null!;
         public virtual Choom Choom { get; set; } = null!;
         public virtual ICollection<CyberWareToOrder> CyberWareToOrders { get; set; }
+
+        public decimal OrderPrice
+        {
+            get
+            {
+                var cyberWarePrices = CyberWareToOrders.Select(cyb => cyb.FinalPrice);
+
+                return cyberWarePrices.Sum(cup => cup);
+            }
+        }
     }
 }

@@ -5,6 +5,8 @@ namespace DumDum_Star
 {
     public class Program
     {
+        public const char EuroDollar = '§';
+
         public static StartType Type { get; } = StartType.IIS;
 
         public static void Main(string[] args)

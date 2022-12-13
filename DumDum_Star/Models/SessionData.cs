@@ -61,7 +61,23 @@ namespace DumDum_Star.Models
                 }
             }
 
+            ValidateOrderState();
             return toReturn;
+        }
+
+        public static bool UpdateCyberWareInOrder(int cyberInOrderId, int newCount)
+        {
+            if (CurrentOrder != null)
+            {
+                var cyber = CurrentOrder.CyberWareToOrders.FirstOrDefault(cyb => cyb.Id == cyberInOrderId);
+                if (cyber != null)
+                {
+                    cyber.Count = newCount;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public static bool RemoveCyberWareFromOrder(CyberWare? cyberWare)
@@ -75,6 +91,16 @@ namespace DumDum_Star.Models
             }
 
             return toReturn;
+        }
+
+        private static void ValidateOrderState()
+        {
+            for (int i = 0; i < CurrentOrder.CyberWareToOrders.Count; i++)
+            {
+                var current = CurrentOrder.CyberWareToOrders.ElementAt(i);
+                if (current.Count < 1)
+                    RemoveCyberWareFromOrder(current.CyberWare);
+            }
         }
     }
 }

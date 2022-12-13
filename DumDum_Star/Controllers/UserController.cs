@@ -25,6 +25,15 @@ namespace DumDum_Star.Controllers
                 return RedirectToAction("Authorization");
         }
 
+        public IActionResult Order()
+        {
+            if (SessionData.CurrentChoom != null)
+                return View(SessionData.CurrentOrder);
+
+            else
+                return RedirectToAction("Authorization");
+        }
+
         public IActionResult Registration()
         {
             return View();
@@ -81,6 +90,13 @@ namespace DumDum_Star.Controllers
         public IActionResult LogOut() 
         {
             return RedirectToAction("Index", "Home", null);
+        }
+        
+        public IActionResult UpdateOrderDetails(int cyberInOrderId, int count)
+        {
+            SessionData.UpdateCyberWareInOrder(cyberInOrderId, count);
+
+            return RedirectToAction("Order");
         }
         #endregion
 
