@@ -1,0 +1,50 @@
+.footer-base {
+    position: fixed;
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    bottom: 0;
+    right: 0%;
+    padding: 0.5% 7.5% 0.5% 1.5%;
+    background-color: gray;
+    width: max-content;
+    background-image: url("../../icons/locations/NorthOak.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 4px 4px white inset;
+    color: black;
+    font-family: 'Jost', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+    .footer-base a {
+        text-decoration: none;
+        color: black;
+        transition: .5s;
+    }
+
+        .footer-base a:hover {
+            text-decoration: underline dashed;
+            color: midnightblue;
+        }
+
+    .footer-base .left-part {
+        display: flex;
+        flex: auto;
+        align-items: center;
+        justify-content: flex-start;
+        word-wrap: break-word;
+        flex-wrap: nowrap;
+        gap: 32px;
+    }
+
+    .footer-base .right-part {
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        align-items: flex-end;
+        min-width: 128px;
+        /* Margin instead of gap, cause gap doesn't work with containers borders. */
+        margin-left: 10%;
+    }

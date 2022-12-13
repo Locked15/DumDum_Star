@@ -32,6 +32,16 @@ namespace DumDum_Star.Controllers
             return View("Index", model);
         }
 
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public IActionResult Locations()
+        {
+            return View();
+        }
+
         public IActionResult Search(string search, float limitLoad, int manufacturerId, int typeId)
         {
             HomeModel model = PrepareIndexModelBySelections(search, limitLoad, manufacturerId, typeId);

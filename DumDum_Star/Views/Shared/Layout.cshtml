@@ -12,6 +12,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,100&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="~/content/css/header.css" />
+        <link rel="stylesheet" href="~/content/css/footer.css" />
         <script type="text/javascript" src="~/content/js/base.js"></script>
     </head>
 
@@ -39,7 +40,16 @@
             @RenderBody()
         </main>
 
-        <footer>
+        <footer class="footer-base">
+            <div class="left-part">
+                <a href="#" onclick="scrollToTheTop()" title="Вернуться наверх.">Наверх</a>
+                <a asp-controller="Home" asp-action="AboutUs" title="Узнайте больше о нас! Хе-хе...">Информация</a>
+                <a asp-controller="Home" asp-action="Locations" title="Узнайте о местах, где нас можно найти. (АГА!)">Локации</a>
+                <a asp-controller="Home" asp-action="Error" title="Попробуй. Узнаешь, что будет.">Прочее</a>
+            </div>
+            <div class="right-part">
+                <span>DumDum-Star</span>
+            </div>
         </footer>
     </body>
 </html>

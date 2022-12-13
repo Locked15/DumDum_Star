@@ -49,6 +49,10 @@ namespace DumDum_Star.Controllers
                 if (!errors.Any() && CheckCredentialsToUnique(newChoom.Login, newChoom.MailAddress))
                 {
                     Context.Chooms.Add(newChoom);
+                    Context.SaveChanges();
+
+                    var choomId = newChoom.Id;
+                    Context.Clients.Add(new() { ChoomId = choomId });
                     Context.SaveChangesAsync();
 
                     return RedirectToActionPermanent("Index", "Home", null);
