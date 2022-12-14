@@ -1,6 +1,8 @@
 ﻿@model DumDum_Star.Models.Entities.Order
 @using DumDum_Star.Models.Entities
-
+@{
+    ViewBag.Title = "Заказ — DumDum-Star";
+}
 
 <link rel="stylesheet" href="~/content/css/order.css" />
 <script src="~/content/js/order.js"></script>
@@ -11,9 +13,9 @@
     </span>
 
     @{
-        if (!Model.CyberWareToOrders.Any())
+        if (Model == null || !Model.CyberWareToOrders.Any())
         {
-            <div>
+            <div class="order-overview order-warning">
                 👾 Заказ пуст...
             </div>
         }
@@ -34,12 +36,13 @@
                         <tr>
                             @if (cwto != null)
                             {
+                                var id = cwto.CyberWareId;
                                 var name = cwto.CyberWare.Name;
                                 var desc = cwto.CyberWare.Description ?? "Отсутствует.";
-                                var imagePath = cwto.CyberWare?.Image ?? "/content/icons/light/missing.png";
+                                var imagePath = cwto.CyberWare?.Image ?? "../icons/light/missing.png";
 
                                 <td class="order-td product-identify">
-                                    <img src=@imagePath alt="ALT." />
+                                    <img src=@imagePath alt="ALT." title="Информация:&#010;@desc" />
                                     <span title="Информация:&#010;@desc">
                                         @name
                                     </span>
@@ -48,7 +51,7 @@
                                     @string.Concat(string.Format("{0:n}", cwto.CyberWare.Price), DumDum_Star.Program.EuroDollar)
                                 </td>
                                 <td class="order-td product-info">
-                                    <input id="Count.@name" type="number" min="0" max="2147483647" value="@cwto.Count" onchange="updateOrderData('@cwto.Id', '@name')" />
+                                    <input id="Count.@name" type="number" min="0" max="2147483647" value="@cwto.Count" onchange="updateOrderData(@id, '@name')" />
                                 </td>
                                 <td class="order-td product-info" style="padding-left: 3.14px;">
                                     @string.Concat(string.Format("{0:n}", cwto.FinalPrice), DumDum_Star.Program.EuroDollar)
@@ -68,7 +71,21 @@
                 </span>
             </section>
             <section class="order-control">
-                
+                <form asp-action="SaveOrder">
+                    <div>
+                        <label>Место исполнения заказа:</label>
+                        @Html.DropDownListFor(model => model.AddressId, new SelectList(ViewBag.Addresses, "Id", "Summary", Model.AddressId))
+                    </div>
+                    <div>
+                        <label for="OrderDate">Дата исполнения заказа: </label>
+                        <input type="date" name="OrderDate" min="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")"
+                               max="@DateTime.Today.AddMonths(2).ToString("yyyy-MM-dd")"
+                               value="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" />
+                        @Html.ValidationMessageFor(model => model.ChippinTime)
+                    </div>
+
+                    <input type="submit" />
+                </form>
             </section>
         }
     }

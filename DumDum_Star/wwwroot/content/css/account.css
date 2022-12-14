@@ -1,0 +1,83 @@
+.account-base {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+    padding: 5% 7.5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .account-base .account-title {
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        width: 15%;
+    }
+
+        .account-base .account-title > div {
+            display: flex;
+            flex: auto;
+            flex-direction: column;
+        }
+
+            .account-base .account-title > div > span {
+                font-family: 'Jost', sans-serif;
+            }
+
+.exit-account {
+    width: 100%;
+    max-width: 128px;
+    background-color: white;
+    transition: 2s ease-in;
+}
+
+    .exit-account:hover {
+        background-color: palevioletred;
+        border-radius: 25px;
+    }
+
+    .exit-account > a {
+        text-decoration: none;
+        font-family: 'Jost', sans-serif;
+    }
+
+    .exit-account:hover > a {
+        text-decoration: underline dashed 1px;
+        color: darkblue;
+    }
+
+.old-orders:hover {
+    background-color: cadetblue;
+}
+
+    .old-orders:hover > a {
+        color: darkgreen;
+    }
+
+.account-base .account-content {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    width: 85%;
+    align-items: center;
+    gap: 15%;
+}
+
+    .account-base .account-content > div {
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+.order-warning {
+    text-align: center;
+    font-size: 2rem;
+    transition: 1.5s;
+    user-select: none;
+    font-family: Impact;
+}
+
+    .order-warning:hover {
+        color: red;
+    }

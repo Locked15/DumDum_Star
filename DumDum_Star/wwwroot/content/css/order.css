@@ -88,10 +88,40 @@
 
 .order-overview {
     display: flex;
-
     flex: auto;
     flex-direction: column;
     align-items: center;
-
     font-size: 1.16rem;
 }
+
+.order-warning {
+    font-size: 2rem !important;
+    transition: 1s ease-in;
+}
+
+    .order-warning:hover {
+        color: red;
+        cursor: help;
+        user-select: none;
+    }
+
+.order-control {
+    align-self: center;
+}
+
+    .order-control > form {
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        gap: 16px;
+        align-content: center;
+    }
+
+        .order-control > form > div {
+            align-self: center;
+        }
+
+        .order-control > form > input[type="submit"] {
+            align-self: center;
+            max-width: 30%;
+        }

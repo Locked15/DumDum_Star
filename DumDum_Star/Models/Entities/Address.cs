@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DumDum_Star.Models.Entities
+﻿namespace DumDum_Star.Models.Entities
 {
     public partial class Address
     {
@@ -16,5 +13,13 @@ namespace DumDum_Star.Models.Entities
         public string Street { get; set; } = null!;
 
         public virtual ICollection<Order> Orders { get; set; }
+
+        public string Summary
+        {
+            get
+            {
+                return $"{City} — {Region ?? "[НЕТ-ДАННЫХ]"} — {Street}";
+            }
+        }
     }
 }

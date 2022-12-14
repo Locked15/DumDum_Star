@@ -55,7 +55,7 @@ namespace DumDum_Star.Controllers
             if (SessionData.CurrentChoom != null)
             {
                 SessionData.InsertCyberWareToOrder(Context.CyberWares.FirstOrDefault(cb => cb.Id == id), count);
-                return RedirectToAction("Account", "User", null);
+                return RedirectToAction("Prepare", "Order", null);
             }
             else
             {
@@ -99,7 +99,7 @@ namespace DumDum_Star.Controllers
             search ??= string.Empty;
             var model = new HomeModel()
             {
-                AvailableCyberWares = Context.CyberWares.ToList().Where(cyb => 
+                AvailableCyberWares = Context.CyberWares.ToList().Where(cyb =>
                 {
                     var basicComparison = cyb.Name.Contains(search, StringComparison.OrdinalIgnoreCase) && cyb.LoadLevel <= limitLoad;
                     var corpoSearch = manufacturerId == 0 || cyb.ManufacturerId == manufacturerId;

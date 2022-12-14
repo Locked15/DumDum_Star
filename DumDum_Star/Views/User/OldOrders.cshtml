@@ -1,9 +1,8 @@
 ﻿@using DumDum_Star.Models.Views
 @model AccountModel
 @{
-    ViewBag.Title = "Аккаунт — DumDum-Star";
+    ViewBag.Title = "Старые заказы — DumDum-Star";
 }
-
 <link rel="stylesheet" href="~/content/css/order.css" />
 <link rel="stylesheet" href="~/content/css/account.css" />
 
@@ -16,21 +15,16 @@
             <span>Имя: @Model.Choom?.Name</span>
             <span>
                 <button class="exit-account old-orders">
-                    <a asp-action="OldOrders">Старые заказы</a>
-                </button>
-            </span>
-            <span>
-                <button class="exit-account">
-                    <a asp-action="LogOut">Выйти</a>
+                    <a asp-action="Account">Управление аккаунтом</a>
                 </button>
             </span>
         </div>
     </div>
 
     <div class="account-content">
-        <h2>🕛 Текущие Заказы 🕛</h2>
+        <h2>🕧 Старые Заказы 🕧</h2>
         @{
-            var orders = Model.Orders.Where(order => order.ChippinTime > DateTime.Today).ToList();
+            var orders = Model.Orders.Where(order => order.ChippinTime <= DateTime.Today).ToList();
 
             if (orders.Any())
             {
@@ -83,8 +77,8 @@
             else
             {
                 <span class="order-warning">
-                    📈 У Вас нет активных заказов. <br />
-                    Закажите что-нибудь! 📉 
+                    🕛 У Вас нет старых заказов.
+                    Новичок? 🕛
                 </span>
             }
         }

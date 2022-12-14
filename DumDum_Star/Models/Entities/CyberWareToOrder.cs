@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DumDum_Star.Models.Entities
 {
     public partial class CyberWareToOrder
     {
+        [Key]
         public int Id { get; set; }
         public int CyberWareId { get; set; }
         public int OrderId { get; set; }

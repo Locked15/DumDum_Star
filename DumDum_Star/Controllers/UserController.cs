@@ -1,4 +1,5 @@
 ﻿using DumDum_Star.Models;
+using DumDum_Star.Models.Views;
 using DumDum_Star.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -19,16 +20,32 @@ namespace DumDum_Star.Controllers
         public IActionResult Account()
         {
             if (SessionData.CurrentChoom != null)
-                return View();
+            {
+                var model = new AccountModel()
+                {
+                    Choom = SessionData.CurrentChoom,
+                };
+                model.InitOrdersManually(Context);
+
+                return View("Account", model);
+            }
 
             else
                 return RedirectToAction("Authorization");
         }
 
-        public IActionResult Order()
+        public IActionResult OldOrders()
         {
             if (SessionData.CurrentChoom != null)
-                return View(SessionData.CurrentOrder);
+            {
+                var model = new AccountModel()
+                {
+                    Choom = SessionData.CurrentChoom,
+                };
+                model.InitOrdersManually(Context);
+
+                return View("OldOrders", model);
+            }
 
             else
                 return RedirectToAction("Authorization");
@@ -89,14 +106,9 @@ namespace DumDum_Star.Controllers
 
         public IActionResult LogOut() 
         {
-            return RedirectToAction("Index", "Home", null);
-        }
-        
-        public IActionResult UpdateOrderDetails(int cyberInOrderId, int count)
-        {
-            SessionData.UpdateCyberWareInOrder(cyberInOrderId, count);
+            SessionData.ResetChoom();
 
-            return RedirectToAction("Order");
+            return RedirectToAction("Index", "Home", null);
         }
         #endregion
 
@@ -106,7 +118,7 @@ namespace DumDum_Star.Controllers
         private bool CheckCredentialsToUnique(string login, string email)
         {
             return !Context.Chooms.Any(choom => choom.Login == login ||
-                                               choom.MailAddress == email);
+                                                choom.MailAddress == email);
         } 
 
         [NonAction]

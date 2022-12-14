@@ -65,14 +65,16 @@ namespace DumDum_Star.Models
             return toReturn;
         }
 
-        public static bool UpdateCyberWareInOrder(int cyberInOrderId, int newCount)
+        public static bool UpdateCyberWareInOrder(int cyberWareId, int newCount)
         {
             if (CurrentOrder != null)
             {
-                var cyber = CurrentOrder.CyberWareToOrders.FirstOrDefault(cyb => cyb.Id == cyberInOrderId);
+                var cyber = CurrentOrder.CyberWareToOrders.FirstOrDefault(cyb => cyb.CyberWareId == cyberWareId);
                 if (cyber != null)
                 {
                     cyber.Count = newCount;
+                    ValidateOrderState();
+
                     return true;
                 }
             }
@@ -85,12 +87,23 @@ namespace DumDum_Star.Models
             bool toReturn = false;
             if (CurrentChoom != null && CurrentOrder != null)
             {
-                var toDelete = CurrentOrder.CyberWareToOrders.FirstOrDefault(cyb => cyb.Id == cyberWare?.Id);
+                var toDelete = CurrentOrder.CyberWareToOrders.FirstOrDefault(cyb => cyb.CyberWareId == cyberWare?.Id);
                 if (toDelete != null)
                     toReturn = CurrentOrder.CyberWareToOrders.Remove(toDelete);
             }
 
             return toReturn;
+        }
+
+        public static void ResetChoom()
+        {
+            CurrentChoom = null;
+            ResetOrder();
+        }
+
+        public static void ResetOrder()
+        {
+            CurrentOrder = null;
         }
 
         private static void ValidateOrderState()
@@ -102,5 +115,69 @@ namespace DumDum_Star.Models
                     RemoveCyberWareFromOrder(current.CyberWare);
             }
         }
+
+        #region Cloning Functions.
+
+        public static Choom? CloneChoom()
+        {
+            if (CurrentChoom != null)
+            {
+                var clone = new Choom()
+                {
+                    Id = CurrentChoom.Id,
+                    Name = CurrentChoom.Name,
+                    Login = CurrentChoom.Login,
+                    Password = CurrentChoom.Password,
+                    MailAddress = CurrentChoom.MailAddress
+                };
+
+                return clone;
+            }
+
+            return null;
+        }
+
+        public static Order? CloneOrder(Choom parent)
+        {
+            if (CurrentOrder != null)
+            {
+                var order = new Order()
+                {
+                    Id = 0,
+                    ChoomId = parent.Id,
+                    ChippinTime = CurrentOrder.ChippinTime,
+                    AddressId = CurrentOrder.AddressId,
+                    Address = CurrentOrder.Address,
+                    CyberWareToOrders = CloneCyberWareToOrders()
+                };
+
+                return order;
+            }
+
+            return null;
+        }
+
+        private static ICollection<CyberWareToOrder> CloneCyberWareToOrders()
+        {
+            if (CurrentOrder != null)
+            {
+                var toReturn = new List<CyberWareToOrder>(CurrentOrder.CyberWareToOrders.Count);
+                foreach (var cwto in CurrentOrder.CyberWareToOrders)
+                {
+                    toReturn.Add(new CyberWareToOrder()
+                    {
+                        Id = cwto.Id,
+                        CyberWareId = cwto.CyberWareId,
+                        OrderId = cwto.OrderId,
+                        Count = cwto.Count
+                    });
+                }
+
+                return toReturn;
+            }
+
+            throw new NullReferenceException();
+        }
+        #endregion
     }
 }
