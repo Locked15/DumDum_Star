@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33103.201
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DumDum_Star", "DumDum_Star\DumDum_Star.csproj", "{79438EB7-8E10-4D14-A99A-E47C711189E5}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "Docker-Compose", "Docker-Compose.dcproj", "{30539A18-1CBC-4F41-971E-FA43F3204F1E}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "Docker-Compose", "Docker-Compose\Docker-Compose.dcproj", "{30539A18-1CBC-4F41-971E-FA43F3204F1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
