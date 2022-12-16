@@ -1,4 +1,6 @@
-﻿namespace DumDum_Star.Models.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace DumDum_Star.Models.Entities
 {
     public partial class CyberWare
     {
@@ -9,15 +11,27 @@
         }
 
         public int Id { get; set; }
+
         public int? TypeId { get; set; }
+
         public int? TargetId { get; set; }
+
         public int? ManufacturerId { get; set; }
+        [Required]
+        [Range(0, 1024)]
         public int Quantity { get; set; }
+
         public bool? Custom { get; set; }
+        [Required]
         public string Name { get; set; } = null!;
+        [Required]
+        [Range(0, double.MaxValue)]
         public decimal Price { get; set; }
+
         public string? Image { get; set; }
+
         public float? LoadLevel { get; set; }
+
         public string? Description { get; set; }
 
         public virtual Corporation? Manufacturer { get; set; }

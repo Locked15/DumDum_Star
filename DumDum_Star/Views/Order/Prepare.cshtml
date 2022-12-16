@@ -51,7 +51,7 @@
                                     @string.Concat(string.Format("{0:n}", cwto.CyberWare.Price), DumDum_Star.Program.EuroDollar)
                                 </td>
                                 <td class="order-td product-info">
-                                    <input id="Count.@name" type="number" min="0" max="2147483647" value="@cwto.Count" onchange="updateOrderData(@id, '@name')" />
+                                    <input id="Count.@name" type="number" min="0" max="@cwto.CyberWare.Quantity" value="@cwto.Count" onchange="updateOrderData(@id, '@name')" />
                                 </td>
                                 <td class="order-td product-info" style="padding-left: 3.14px;">
                                     @string.Concat(string.Format("{0:n}", cwto.FinalPrice), DumDum_Star.Program.EuroDollar)
