@@ -26,7 +26,8 @@ namespace DumDum_Star.Controllers
                 ManufacturerId = 0,
                 TypeId = 0,
             };
-            model.AvailableCyberWares.AddRange(Context.CyberWares);
+            model.AvailableCyberWares.AddRange(Context.CyberWares.Where(cyb => 
+                                                                        cyb.Quantity > 0));
 
             PrepareViewBag();
             return View("Index", model);
@@ -104,8 +105,9 @@ namespace DumDum_Star.Controllers
                     var basicComparison = cyb.Name.Contains(search, StringComparison.OrdinalIgnoreCase) && cyb.LoadLevel <= limitLoad;
                     var corpoSearch = manufacturerId == 0 || cyb.ManufacturerId == manufacturerId;
                     var typeSearch = typeId == 0 || cyb.TypeId == typeId;
+                    var count = cyb.Quantity > 0;
 
-                    return basicComparison && corpoSearch && typeSearch;
+                    return basicComparison && corpoSearch && typeSearch & count;
                 }).ToList(),
 
                 Search = search,

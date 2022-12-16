@@ -1,2 +1,22 @@
-﻿Are you admin?
-Srsly?
+﻿@using DumDum_Star.Models
+@{
+    ViewBag.Title = "Администрирование — DumDum-Star";
+}
+
+<link rel="stylesheet" href="~/content/css/admin.css" />
+
+<div class="base-admin-panel">
+    <h1>Добро пожаловать в систему, @SessionData.CurrentChoom.Login</h1>
+    <article>
+        <h3>⚒️ Доступные действия ⚒️</h3>
+        <div class="admin-actions">
+            <button class="create-new" role="button"><a asp-action="CreateCyberWare">Создание Товара</a></button>
+            <button class="update-one" role="button"><a asp-action="UpdateCyberWare">Редактирование Товара</a></button>
+            <button class="delete-one" role="button"><a asp-action="DeleteCyberWare">Удаление Товара</a></button>
+
+            <button class="orders" role="button"><a asp-action="OrdersWork">Заказы</a></button>
+
+            <button class="exit" role="button"><a asp-action="Exit">Выход</a></button>
+        </div>
+    </article>
+</div>

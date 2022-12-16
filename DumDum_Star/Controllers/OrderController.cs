@@ -76,6 +76,7 @@ namespace DumDum_Star.Controllers
             SessionData.CurrentOrder.ChippinTime = orderDate;
         }
 
+        [NonAction]
         private void SaveCreatedOrderToDb()
         {
             var choom = SessionData.CloneChoom();
@@ -83,8 +84,20 @@ namespace DumDum_Star.Controllers
 
             Context.Orders.Add(order);
             Context.CyberWareToOrders.AddRange(order.CyberWareToOrders);
+            ChopDownCyberWareCountInDb(order);
 
             Context.SaveChanges(true);
+        }
+
+        [NonAction]
+        private void ChopDownCyberWareCountInDb(Order order)
+        {
+            foreach (var cwto in order.CyberWareToOrders)
+            {
+                var cyberFound = Context.CyberWares.FirstOrDefault(cyber => cyber.Id == cwto.CyberWareId);
+                if (cyberFound != null)
+                    cyberFound.Quantity -= cwto.Count;
+            }
         }
 
         [NonAction]
