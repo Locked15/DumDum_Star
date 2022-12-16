@@ -11,6 +11,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,700;1,100&display=swap" rel="stylesheet">
 
+        <link rel="icon" href="~/icon.ico" />
+        <link rel="shortcut icon" href="~/icon.ico" />
+
         <link rel="stylesheet" href="~/content/css/header.css" />
         <link rel="stylesheet" href="~/content/css/footer.css" />
         <script type="text/javascript" src="~/content/js/base.js"></script>
@@ -21,7 +24,7 @@
             <div class="header-nav">
                 <div>
                     <a asp-controller="Home" asp-action="Index">
-                        <img id="header-icon" src="~/icons/light/header/secondary-small.svg" alt="Time to chippin' IN!" 
+                        <img id="header-icon" src="~/images/light/header/secondary-small.svg" alt="Time to chippin' IN!" 
                              onload="setTitleForIcon()"/>
                     </a>
                 </div>
@@ -30,7 +33,7 @@
                     <a class="user-string" asp-controller="User" asp-action="Account">@SessionData.GetHeaderText()</a>
 
                     <a asp-controller="Order" asp-action="Prepare">
-                        <img src="~/icons/light/header/basket/basket.png" alt="Your basket." />
+                        <img src="~/images/light/header/basket/basket.png" alt="Your basket." />
                     </a>
                 </div>
             </div>

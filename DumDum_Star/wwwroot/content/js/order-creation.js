@@ -8,7 +8,7 @@ function newUrlInputted() {
 
 function onErrorLoad() {
     let imgElement = document.getElementById("cyberImage");
-    imgElement.src = "../icons/light/missing.png";
+    imgElement.src = "../images/light/missing.png";
 
     correctImage = false;
 }

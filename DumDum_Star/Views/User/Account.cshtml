@@ -10,7 +10,7 @@
 <div class="account-base">
     <div class="account-title">
         <h1>@Model.Choom.Login</h1>
-        <img src="~/icons/light/missing.png" width="128px" />
+        <img src="~/images/light/missing.png" width="128px" />
         <div>
             <span>ID: @Model.Choom.Id</span>
             <span>Имя: @Model.Choom?.Name</span>
@@ -55,7 +55,7 @@
                                             var id = cwto.CyberWareId;
                                             var name = cwto.CyberWare.Name;
                                             var desc = cwto.CyberWare.Description ?? "Отсутствует.";
-                                            var imagePath = cwto.CyberWare?.Image ?? "../icons/light/missing.png";
+                                            var imagePath = cwto.CyberWare?.Image ?? "../images/light/missing.png";
 
                                             <td class="order-td product-identify">
                                                 <img src=@imagePath alt="ALT." title="Информация:&#010;@desc" />

@@ -19,10 +19,10 @@ namespace DumDum_Star.Models
         public static string GetBasketIconPath()
         {
             if (CurrentOrder?.CyberWareToOrders.Any() ?? false)
-                return "~/icons/light/header/basket/basket-new.png";
+                return "~/images/light/header/basket/basket-new.png";
 
             else
-                return "~/icons/light/header/basket/basket.png";
+                return "~/images/light/header/basket/basket.png";
         }
 
         public static bool InsertCyberWareToOrder(CyberWare? cyberWare, int count)
